@@ -1,0 +1,62 @@
+\documentclass{article}
+
+\title{CSC Writeup}
+\author{Julie Martin}
+
+\usepackage{Sweave}
+\usepackage{graphicx}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\maketitle{}
+
+\begin{itemize}
+\item[1.] \textbf{Describe the null hypotheses to which the p-values given in Table 3.4 correspond. Explain what conclusions you can draw based on these p-values. Your explanation should be phrased in terms of sales, TV, radio, and newspaper, rather than in terms of the coefficients of the linear model.} 
+
+The null hypothesis corresponding to the 'intercept' value is: when the TV, radio, and newspaper advertising budgets are all \$0, product sales will be \$0.  Based on the p-value of $< 0.0001$, we can reject this null hypothesis with 99.9999\% confidence. 
+
+The null hypothesis corresponding to the 'TV' value is that the TV advertising budget has no correlation with product sales.  Based on the p-value of $<0.0001$, we can reject this null hypothesis with 99.9999\% confidence. 
+
+The null hypothesis corresponding to the 'radio' value is that the radio advertising budget has no correlation with product sales.  Based on the p-value of $<0.0001$, we can reject this null hypothesis with 99.9999\% confidence. 
+
+The null hypothesis corresponding to the 'newspaper' value is that the newspaper advertising budget has no correlation with product sales.  Based on the p-value of $<0.8599$, we cannot reject this null hypothesis.
+
+        \item[4.] 
+          \begin{enumerate}
+            \item[a)] I might expect the training RSS for the linear model to be lower than the training RSS for the cubic model. Since RSS disproportionately penalizes the model for points that are very far away from the model, I would expect the linear model to fit better since the true relationship is linear.  However, it's likely that in the process of fitting the model to the training data, the cubic regression terms, $\beta_2$ and $\beta_3$, would be so close to zero that the cubic model would have virtually the same RSS as the linear model.  
+            \item[b)] I would definitely expect the test RSS for the linear model to be much lower than the test RSS for the cubic model.  Since the model isn't specifically fitted to the test data set, getting the true relationship right is even more important.
+            \item[c)] We would probably expect the training RSS for the cubic model to be more accurate. Since there are more terms in the cubic model, the cubic model is more flexible and therefore will probably fit a non-linear model better than a linear model would.  However, the cubic model may be more prone to overfitting the data. 
+            \item[d)] Since the linear model is less prone to overfitting the data than the cubic model, I would expect the linear model to have a lower RSS than the cubic model, even if the true relationship isn't linear. 
+          \end{enumerate}
+
+    \item[5.] \textbf{Consider the fitted values that result from performing linear regression without an intercept. In this setting, the $i$th fitted value takes the form:
+    \begin{equation}
+    \hat{y_i}=x_i\hat{\beta_i},
+    \end{equation}
+    \begin{equation}
+    \hat{\beta}=(\sum_{i=1}^{n}x_iy_i)/(\sum_{i'=1}^{n}x^2_{i'}).
+    \end{equation} 
+Show that we can write
+    \begin{equation}
+    \hat{y_i}=\sum_{i'=1}^{n}a_{i'}y_{i'}.
+    \end{equation}
+What is $a_{i'}$?}
+
+$a_{i'}$ represents the ratio between the predicted y-value and the actual y-value.  
+
+    \item[6.] \textbf{Using (3.4), argue that in the case of simple linear regression, the least squares line always passes through the point ($\bar{x}, \bar{y}$).} \\
+    Equation 3.4: $\hat{\beta}_0=\bar{y}-\hat{\beta}_1\bar{x}$. \\
+    Since we are taking the partial derivative of $\bar{y}$ and $\bar{x}$, and set the partial derivatives equal to 0 (thereby minimizing the RSS), we can be sure that the least squares line passes through the point ($\bar{x}, \bar{y}$).
+  \item[Challenge problem:] \textbf{Use the identities for expected value and variance to derive the bias-variance decomposition of $E[(y-\hat{f}(x))^2]$.} \\
+  
+   $\sigma^2=E{(\frac{RSS}{(n-p-1)})}=E{(\frac{RSS}{(n-p-1)})}$ \\
+  $E(Y-\hat{Y})^2=E[f(X)+\epsilon-\hat{f}(X)]^2=[f(X)-\hat{f}(X)]^2+Var(\epsilon)$ \\
+ 
+ Since we're looking at the RSS of the error term, and since the true $e_i=0$, \\
+ 
+ $RSS_e=\sum_{i=1}^{n}((\hat{-e_i})^2)=\sum_{i=1}^{n}((\hat{e_i})^2)$....? \\
+
+\end{itemize}
+
+
+\end{document}
